@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using CryptoViewer.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,14 +12,20 @@ using System.Windows.Shapes;
 
 namespace CryptoViewer
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            //MainFrame.Navigate(new MainView());
+            MainFrame.Content = new TextBlock
+            {
+                Text = "Frame works",
+                FontSize = 30,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
         }
     }
 }
