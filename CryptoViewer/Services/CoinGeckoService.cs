@@ -12,10 +12,18 @@ namespace CryptoViewer.Services
 {
     class CoinGeckoService : ICryptoService
     {
-        private readonly HttpClient _http = new()
+        private readonly HttpClient _http;
+
+        public CoinGeckoService()
         {
-            BaseAddress = new Uri("https://api.coingecko.com/api/v3/")
-        };
+            _http = new HttpClient
+            {
+                BaseAddress = new Uri("https://api.coingecko.com/api/v3/")
+            };
+
+            _http.DefaultRequestHeaders.UserAgent.ParseAdd("CryptoViewerApp/1.0");
+        }
+
 
         public async Task<List<CryptoCurrency>> GetTopAsync(int count)
         {

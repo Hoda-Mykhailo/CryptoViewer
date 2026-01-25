@@ -18,14 +18,14 @@ namespace CryptoViewer
         public MainWindow()
         {
             InitializeComponent();
-            //MainFrame.Navigate(new MainView());
-            MainFrame.Content = new TextBlock
-            {
-                Text = "Frame works",
-                FontSize = 30,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
+            MainFrame.Navigate(new MainView());
+            //MainFrame.Content = new TextBlock
+            //{
+            //    Text = "Frame works",
+            //    FontSize = 30,
+            //    HorizontalAlignment = HorizontalAlignment.Center,
+            //    VerticalAlignment = VerticalAlignment.Center
+            //};
         }
     }
 }

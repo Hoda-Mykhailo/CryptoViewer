@@ -7,5 +7,6 @@
         mc:Ignorable="d"
         Title="Crypto Viewer" Height="600" Width="900">
 
-    <Frame x:Name="MainFrame"/>
+    <Frame x:Name="MainFrame"
+           NavigationUIVisibility="Hidden"/>
 </Window>

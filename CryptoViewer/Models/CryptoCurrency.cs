@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace CryptoViewer.Models
 {
-    class CryptoCurrency
+    public class CryptoCurrency
     {
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [JsonPropertyName("symbol")]
-        public string Symbol { get; set; }
+        public string Symbol { get; set; } = string.Empty;
 
         [JsonPropertyName("current_price")]
         public decimal Price { get; set; }
@@ -28,6 +28,6 @@ namespace CryptoViewer.Models
         public decimal MarketCap { get; set; }
 
         [JsonPropertyName("image")]
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }
