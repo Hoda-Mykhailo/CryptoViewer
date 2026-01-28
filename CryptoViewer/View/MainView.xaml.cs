@@ -27,5 +27,14 @@ namespace CryptoViewer.View
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+        private void OpenDetails(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is MainViewModel vm && vm.SelectedCurrency != null)
+            {
+                var details = new DetailsView(vm.SelectedCurrency);
+                details.Show();
+            }
+        }
+
     }
 }

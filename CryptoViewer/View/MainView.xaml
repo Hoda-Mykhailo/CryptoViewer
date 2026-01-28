@@ -44,6 +44,7 @@
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Currencies}"
                   SelectedItem="{Binding SelectedCurrency}"
+                  MouseDoubleClick="OpenDetails"
                   BorderThickness="0">
 
             <ListView.ItemTemplate>
@@ -74,6 +75,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
 
         <!-- SELECTED INFO -->
         <Border Grid.Row="2"

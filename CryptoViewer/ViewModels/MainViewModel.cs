@@ -35,6 +35,7 @@ namespace CryptoViewer.ViewModels
         {
             _service = new CoinGeckoService();
             Load();
+            LoadTop10Async();
         }
 
         private async void Load()
@@ -60,5 +61,12 @@ namespace CryptoViewer.ViewModels
 
             Currencies = new ObservableCollection<CryptoCurrency>(filtered);
         }
+        public async Task LoadTop10Async()
+        {
+            var data = await _service.GetTopAsync(10);
+            _allCurrencies = data.ToList();
+            Currencies = new ObservableCollection<CryptoCurrency>(_allCurrencies);
+        }
+
     }
 }

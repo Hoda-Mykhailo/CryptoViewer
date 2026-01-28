@@ -13,5 +13,6 @@ namespace CryptoViewer.Services.Interfaces
         Task<CryptoCurrency> GetDetailsAsync(string id);
         Task<List<(DateTime, decimal)>> GetChartAsync(string id);
         Task<decimal> ConvertAsync(string from, string to);
+        Task<List<double>> GetMarketChartAsync(string coinId);
     }
 }

@@ -68,5 +68,19 @@ namespace CryptoViewer.Services
                 .GetProperty(to)
                 .GetDecimal();
         }
+        public async Task<List<double>> GetMarketChartAsync(string coinId)
+        {
+            var url = $"https://api.coingecko.com/api/v3/coins/{coinId}/market_chart?vs_currency=usd&days=7";
+
+            var json = await _http.GetStringAsync(url);
+            using var doc = JsonDocument.Parse(json);
+
+            return doc.RootElement
+                .GetProperty("prices")
+                .EnumerateArray()
+                .Select(p => p[1].GetDouble())
+                .ToList();
+        }
+
     }
 }

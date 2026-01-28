@@ -19,9 +19,11 @@ namespace CryptoViewer.View
     /// </summary>
     public partial class DetailsView : Window
     {
-        public DetailsView()
+        public DetailsView(Models.CryptoCurrency selectedCurrency)
         {
             InitializeComponent();
+            DataContext = new DetailsView(selectedCurrency);
+
         }
     }
 }
