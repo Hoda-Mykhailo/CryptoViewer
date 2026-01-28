@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CryptoViewer.Models;
+using CryptoViewer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +21,10 @@ namespace CryptoViewer.View
     /// </summary>
     public partial class DetailsView : Window
     {
-        public DetailsView(Models.CryptoCurrency selectedCurrency)
+        public DetailsView(CryptoCurrency currency)
         {
             InitializeComponent();
-            DataContext = new DetailsView(selectedCurrency);
-
+            DataContext = new DetailsViewModel(currency);
         }
     }
 }

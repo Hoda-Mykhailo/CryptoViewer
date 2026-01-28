@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CryptoViewer.ViewModels
 {
-    public partial class DetailsView : ObservableObject
+    public partial class DetailsViewModel : ObservableObject
     {
         private readonly ICryptoService _service;
 
@@ -22,17 +22,37 @@ namespace CryptoViewer.ViewModels
         [ObservableProperty]
         private ObservableCollection<double> prices = new();
 
-        public DetailsView(CryptoCurrency currency)
+        [ObservableProperty]
+        private bool isLoading;
+
+        public DetailsViewModel(CryptoCurrency currency)
         {
             _service = new CoinGeckoService();
             Currency = currency;
-            LoadChart();
+            _ = LoadChartAsync();
+            
+            //LoadChart();
         }
 
-        private async void LoadChart()
+        private async Task LoadChartAsync()
         {
-            var data = await _service.GetMarketChartAsync(currency.Id);
-            Prices = new ObservableCollection<double>(data);
+            try
+            {
+                isLoading = true;
+
+                var data = await _service.GetMarketChartAsync(Currency.Id);
+                Prices = new ObservableCollection<double>(data);
+            }
+            finally
+            {
+                isLoading = false;
+            }
         }
+
+        //private async void LoadChart()
+        //{
+        //    var data = await _service.GetMarketChartAsync(currency.Id);
+        //    Prices = new ObservableCollection<double>(data);
+        //}
     }
 }
