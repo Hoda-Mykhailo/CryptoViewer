@@ -3,10 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CryptoViewer"
         mc:Ignorable="d"
-        Title="Crypto Viewer" Height="600" Width="900">
+        Title="Crypto Viewer"
+        Height="600"
+        Width="900">
 
-    <Frame x:Name="MainFrame"
-           NavigationUIVisibility="Hidden"/>
+    <Grid Background="{DynamicResource BgBrush}">
+        <!-- Рядки -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Верхня панель -->
+            <RowDefinition Height="*"/>
+            <!-- Контент -->
+        </Grid.RowDefinitions>
+
+        <!-- 🔝 Верхня панель -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="10">
+
+            <Button Content="🌙 Dark theme"
+                    Width="120"
+                    Height="30"
+                    Background="{DynamicResource BgBrush}"
+                    Foreground="{DynamicResource TextBrush}"
+                    Click="DarkTheme_Click"/>
+
+            <Button Content="☀ Light theme"
+                    Width="120"
+                    Height="30"
+                    Background="{DynamicResource BgBrush}"
+                    Foreground="{DynamicResource TextBrush}"
+                    Margin="8,0,0,0"
+                    Click="LightTheme_Click"/>
+        </StackPanel>
+
+        <!-- 🔽 Основний контент -->
+        <Frame x:Name="MainFrame"
+               Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+
 </Window>

@@ -13,6 +13,12 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Grid Background="{StaticResource BgBrush}">
+            <TextBlock Text="Bitcoin"
+               Foreground="{StaticResource TextBrush}"
+               FontSize="20"/>
+        </Grid>
+
         <!-- SEARCH -->
         <Grid Grid.Row="0" Margin="0,0,0,10">
             <TextBox x:Name="SearchBox"
@@ -75,7 +81,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
 
         <!-- SELECTED INFO -->
         <Border Grid.Row="2"
@@ -94,4 +100,5 @@
         </Border>
 
     </Grid>
+
 </Page>

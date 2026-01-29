@@ -19,13 +19,36 @@ namespace CryptoViewer
         {
             InitializeComponent();
             MainFrame.Navigate(new MainView());
-            //MainFrame.Content = new TextBlock
-            //{
-            //    Text = "Frame works",
-            //    FontSize = 30,
-            //    HorizontalAlignment = HorizontalAlignment.Center,
-            //    VerticalAlignment = VerticalAlignment.Center
-            //};
+            
+
+        }
+
+        private void SetTheme(string theme)
+        {
+            var dictionaries = Application.Current.Resources.MergedDictionaries;
+
+            var oldTheme = dictionaries
+                .FirstOrDefault(d => d.Source != null &&
+                    (d.Source.OriginalString.Contains("Light.xaml") ||
+                     d.Source.OriginalString.Contains("Dark.xaml")));
+
+            if (oldTheme != null)
+                dictionaries.Remove(oldTheme);
+
+            dictionaries.Add(new ResourceDictionary
+            {
+                Source = new Uri($"Themes/{theme}.xaml", UriKind.Relative)
+            });
+        }
+
+        private void DarkTheme_Click(object sender, RoutedEventArgs e)
+        {
+            SetTheme("Dark");
+        }
+
+        private void LightTheme_Click(object sender, RoutedEventArgs e)
+        {
+            SetTheme("Light");
         }
     }
 }
